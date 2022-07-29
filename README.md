@@ -25,5 +25,5 @@ A project that shows tasks added in order to guide your day-to-day activities
 
 ## Demo
 
-[ToDo List](www.google.com.br)
+[ToDo List](https://todolistforlearningintentions.netlify.app/)
 
