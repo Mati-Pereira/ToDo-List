@@ -36,14 +36,14 @@ const App = (): JSX.Element => {
         <h1 className="text-white text-4xl font-bold border-b-2 w-full flex justify-center py-5 mb-5">
           Lista de Tarefas
         </h1>
-        {list.map((item) => (
+        {list?.map((item) => (
           <List
             key={item.id}
             item={item}
             onDelete={() => handleDeleteTask(item.id)}
           />
         ))}
-        {(list.length === 0) ? <h1 className="flex justify-center w-1/2 mx-auto items-center text-5xl text-white h-[70vh] text-center leading-loose">Nenhuma Tarefa no momento :)</h1> : null}
+        {(list?.length === 0) ? <h1 className="flex justify-center w-1/2 mx-auto items-center text-5xl text-white h-[70vh] text-center leading-loose">Nenhuma Tarefa no momento :)</h1> : null}
       </div>
     </div>
   )
