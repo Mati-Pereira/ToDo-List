@@ -1,11 +1,12 @@
 import { useState } from "react";
-import type { Item } from "./types/item"
+import type { Item } from "./types/item";
 
-import { List } from "./components/List"
 import { AddNotes } from "./components/AddNotes";
+import { List } from "./components/List";
 
 export default function App() {
   const [list, setList] = useState<Item[]>([])
+  console.log("🚀 ~ file: App.tsx ~ line 9 ~ App ~ list", list)
 
   const handleTask = (taskname: string) => {
     let newList = [...list]
@@ -17,14 +18,21 @@ export default function App() {
     setList(newList)
   }
 
+  function handleDeleteClick(id: number) {
+    const removeItem = list.filter((todo) => {
+      return todo.id !== id;
+    });
+    setList(removeItem);
+  }
+
   return (
     <div className="max-w-4xl flex justify-center m-auto flex-col">
 
       <AddNotes onEnter={handleTask} />
 
       <h1 className="text-white text-4xl font-bold border-b-2 w-full flex justify-center py-5">Lista de Tarefas</h1>
-      {list.map((item, index) => (
-        <List key={index} item={item} />
+      {list.map((item) => (
+        <List key={item.id} item={item} onClick={() => handleDeleteClick(item.id)} />
       ))}
     </div>
   );
