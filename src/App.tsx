@@ -11,7 +11,7 @@ const App = (): JSX.Element => {
   const handleAddTask = (taskname: string): void => {
     const newList = [...list]
     newList.push({
-      id: list.length + 1,
+      id: list?.length + 1,
       name: taskname,
       done: false
     })
@@ -43,7 +43,7 @@ const App = (): JSX.Element => {
             onDelete={() => handleDeleteTask(item.id)}
           />
         ))}
-        {(list.length < 1) ? <h1 className="flex justify-center w-1/2 mx-auto items-center text-5xl text-white h-[70vh] text-center leading-loose">Nenhuma Tarefa no momento :)</h1> : null}
+        {(list?.length < 1 ?? []) ? <h1 className="flex justify-center w-1/2 mx-auto items-center text-5xl text-white h-[70vh] text-center leading-loose">Nenhuma Tarefa no momento :)</h1> : null}
       </div>
     </div>
   )

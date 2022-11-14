@@ -19,7 +19,7 @@ const List = ({ item, onDelete }: Props): JSX.Element => {
               type="checkbox"
               className="w-6 h-6 "
               checked={isChecked}
-              onChange={(e) => setIsChecked(e.target.checked)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setIsChecked(e.target.checked)}
             />
             <li
               key={item.id}

@@ -8,7 +8,7 @@ const AddNotes = ({ onEnter }: AddNotesProps): JSX.Element => {
   const [inputText, setInputText] = useState('')
 
   const handleClick = (): void => {
-    if (inputText.length > 0) {
+    if (inputText !== '') {
       onEnter(inputText)
       setInputText('')
     }
@@ -33,7 +33,7 @@ const AddNotes = ({ onEnter }: AddNotesProps): JSX.Element => {
         type="text"
         placeholder="Adicione uma Nota"
         className="w-full rounded px-2 py-2 bg-slate-700 text-gray-100"
-        onChange={(e) => setInputText(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputText(e.target.value)}
         value={inputText}
         onKeyUp={handleKeyUp}
       />
