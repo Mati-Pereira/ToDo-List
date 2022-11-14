@@ -5,7 +5,7 @@ import type { Item } from './types/item'
 
 const App = (): JSX.Element => {
   const [list, setList] = useState<Item[]>(
-    JSON.parse(localStorage.getItem('todos')!)
+    JSON.parse(localStorage.getItem('todos')!) ?? []
   )
 
   const handleAddTask = (taskname: string): void => {
