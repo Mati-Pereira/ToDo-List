@@ -1,40 +1,45 @@
-import { useState } from "react";
-import type { Item } from "./types/item";
+import { useEffect, useState } from 'react'
+import { AddNotes } from './components/AddNotes'
+import { List } from './components/List'
+import type { Item } from './types/item'
 
-import { AddNotes } from "./components/AddNotes";
-import { List } from "./components/List";
+const App = (): JSX.Element => {
+  const [list, setList] = useState<Item[]>(() => {
+    return JSON.parse(localStorage.getItem('todos')!)
+  })
 
-export default function App() {
-  const [list, setList] = useState<Item[]>([])
-  console.log("🚀 ~ file: App.tsx ~ line 9 ~ App ~ list", list)
-
-  const handleTask = (taskname: string) => {
-    let newList = [...list]
+  const handleAddTask = (taskname: string): void => {
+    const newList = [...list]
     newList.push({
       id: list.length + 1,
       name: taskname,
-      done: false,
+      done: false
     })
     setList(newList)
   }
 
-  function handleDeleteClick(id: number) {
+  const handleDeleteTask = (id: number): void => {
     const removeItem = list.filter((todo) => {
-      return todo.id !== id;
-    });
-    setList(removeItem);
+      return todo.id !== id
+    })
+    setList(removeItem)
   }
+
+  // set in localStorage
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(list))
+  }, [list])
 
   return (
     <div className="max-w-4xl flex justify-center m-auto flex-col">
-
-      <AddNotes onEnter={handleTask} />
-
+      <AddNotes onEnter={handleAddTask} />
       <h1 className="text-white text-4xl font-bold border-b-2 w-full flex justify-center py-5">Lista de Tarefas</h1>
       {list.map((item) => (
-        <List key={item.id} item={item} onClick={() => handleDeleteClick(item.id)} />
+        <List key={item.id} item={item} onDelete={() => handleDeleteTask(item.id)} />
       ))}
     </div>
-  );
+  )
 }
 
+export default App

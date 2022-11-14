@@ -1,11 +1,10 @@
-import { useState, KeyboardEvent, MouseEvent } from 'react';
+import { useState, KeyboardEvent, MouseEvent } from 'react'
 
-type AddNotesProps = {
+interface AddNotesProps {
   onEnter: (taskname: string) => void
 }
 
-export function AddNotes({ onEnter }: AddNotesProps) {
-
+export function AddNotes ({ onEnter }: AddNotesProps) {
   const [inputText, setInputText] = useState('')
 
   const handleClick = () => {
@@ -37,5 +36,5 @@ export function AddNotes({ onEnter }: AddNotesProps) {
       />
 
     </div>
-  );
+  )
 }

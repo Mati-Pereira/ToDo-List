@@ -1,14 +1,13 @@
-import { useState } from 'react';
-import { AiOutlineClose } from 'react-icons/ai';
-import type { Item } from "../types/item";
+import { useState } from 'react'
+import { AiOutlineClose } from 'react-icons/ai'
+import type { Item } from '../types/item'
 
-type Props = {
-  item: Item;
-  onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
+interface Props {
+  item: Item
+  onDelete: (event: React.MouseEvent<HTMLDivElement>) => void
 }
 
-export function List({ item, onClick }: Props) {
-
+export function List ({ item, onDelete }: Props) {
   const [isChecked, setIsChecked] = useState(item.done)
 
   return (
@@ -24,15 +23,15 @@ export function List({ item, onClick }: Props) {
             />
             <li
               key={item.id}
-              className={`py-2 text-white ${isChecked ? "line-through" : "initial"}`}>
+              className={`py-2 text-white ${isChecked ? 'line-through' : 'initial'}`}>
               {item.name}
             </li>
           </div>
-          <div onClick={onClick}>
+          <div onClick={onDelete}>
             <AiOutlineClose className='text-red-400 font-bold text-2xl cursor-pointer' />
           </div>
         </div>
       </ul >
     </div >
-  );
+  )
 }
