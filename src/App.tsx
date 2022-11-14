@@ -4,14 +4,14 @@ import { List } from './components/List'
 import type { Item } from './types/item'
 
 const App = (): JSX.Element => {
-  const [list, setList] = useState<Item[]>(() => {
-    return JSON.parse(localStorage.getItem('todos')!)
-  })
+  const [list, setList] = useState<Item[]>(
+    JSON.parse(localStorage.getItem('todos')!)
+  )
 
   const handleAddTask = (taskname: string): void => {
     const newList = [...list]
     newList.push({
-      id: list?.length + 1,
+      id: list.length + 1,
       name: taskname,
       done: false
     })
