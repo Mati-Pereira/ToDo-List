@@ -9,7 +9,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint src/* --fix --quiet",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prod": "yarn build && yarn preview"
   },
   "dependencies": {
     "husky": "^8.0.2",
