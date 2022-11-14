@@ -22,4 +22,4 @@ Um projeto que mostra tarefas que você queira guardar, usando o localStorage pa
 
 ## Demo
 
-[ToDo List](https://todolistforlearningintentions.netlify.app/)
+[ToDo List](https://todo-list-matheus-rodrigues.netlify.app/)
